@@ -25,7 +25,7 @@ export default function Dashboard() {
           <ModeToggle />
         </header>
         <main className="p-4">
-          <Toaster position="top-left" richColors />
+          <Toaster position="top-left" richColors className="capitalize" />
           <Outlet />
         </main>
       </SidebarInset>

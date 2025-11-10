@@ -1,11 +1,10 @@
-import * as z from "zod";
-export const formSchemaPost = z.object({
-  title: z.string().nonempty("tidak boleh kosong"),
-  desc: z.string().nonempty("tidak boleh kosong"),
-  status: z.number(),
-  priority: z.number(),
-  due_date: z.iso.datetime(),
-});
+export interface formSchemaPost {
+  title: string;
+  desc: string;
+  status: number;
+  priority: number;
+  due_date: Date;
+}
 
 export interface dataTodoType {
   id: number;
