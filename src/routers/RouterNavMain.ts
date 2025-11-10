@@ -1,19 +1,26 @@
 import type React from "react";
-import type { IconName } from "lucide-react/dynamic";
 import Home from "@/layout/Home";
+import TodoPage from "@/features/todo";
+import { ClipboardCheck, House, type LucideIcon } from "lucide-react";
 
 interface RouterDataProps {
   title: string;
-  icon: IconName;
+  icon: LucideIcon;
   path: string;
   component: React.ComponentType;
 }
 const RouterNavMain: RouterDataProps[] = [
   {
     title: "Home",
-    icon: "house",
+    icon: House,
     path: "/",
     component: Home,
+  },
+  {
+    title: "To-Do",
+    icon: ClipboardCheck,
+    path: "/todo",
+    component: TodoPage,
   },
 ];
 export default RouterNavMain;

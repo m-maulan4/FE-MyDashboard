@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/sidebar";
 import { Outlet } from "react-router";
 import { ModeToggle } from "../components/dark-mode";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function Dashboard() {
   return (
@@ -24,6 +25,7 @@ export default function Dashboard() {
           <ModeToggle />
         </header>
         <main className="p-4">
+          <Toaster position="top-left" richColors />
           <Outlet />
         </main>
       </SidebarInset>

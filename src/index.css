@@ -118,3 +118,39 @@
     @apply bg-background text-foreground;
   }
 }
+@layer utilities {
+  .bg-green {
+    @apply bg-green-700;
+  }
+  .bg-blue {
+    @apply bg-blue-800;
+  }
+  .bg-red {
+    @apply bg-red-800;
+  }
+  .btn-green {
+    @apply bg-green-700 hover:bg-green-800 text-white;
+  }
+  .btn-blue {
+    @apply bg-blue-700 hover:bg-blue-800 text-white;
+  }
+  .btn-red {
+    @apply bg-red-700 hover:bg-red-800 text-white;
+  }
+  .h4,
+  h4 {
+    @apply text-xl font-semibold;
+  }
+  .h3,
+  h3 {
+    @apply text-2xl font-semibold;
+  }
+  .h2,
+  h2 {
+    @apply text-3xl font-semibold;
+  }
+  .h1,
+  h1 {
+    @apply text-4xl font-semibold;
+  }
+}
