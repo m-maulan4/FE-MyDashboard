@@ -10,11 +10,13 @@ export default function TodoPage() {
     <>
       <HeaderTodo />
       <div className="grid grid-cols-3 gap-3">
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-4">
           <CardTodoTitle title="Pending" icons="circle" iconcolor="red" />
           {data?.pending.map((p, i) => (
             <CardTodoConten
               key={i}
+              id_todo={p.id}
+              status={p.status}
               title={p.title}
               desc={p.description}
               priority={p.priority}
@@ -22,7 +24,7 @@ export default function TodoPage() {
             />
           ))}
         </div>
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-4">
           <CardTodoTitle
             title="On Progress"
             icons="circle-dashed"
@@ -31,6 +33,8 @@ export default function TodoPage() {
           {data?.on_progress.map((o, i) => (
             <CardTodoConten
               key={i}
+              id_todo={o.id}
+              status={o.status}
               title={o.title}
               desc={o.description}
               priority={o.priority}
@@ -38,7 +42,7 @@ export default function TodoPage() {
             />
           ))}
         </div>
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-4">
           <CardTodoTitle
             title="Completed"
             icons="circle-check"
@@ -47,6 +51,8 @@ export default function TodoPage() {
           {data?.completed.map((c, i) => (
             <CardTodoConten
               key={i}
+              id_todo={c.id}
+              status={c.status}
               title={c.title}
               desc={c.description}
               priority={c.priority}

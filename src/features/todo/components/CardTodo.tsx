@@ -8,6 +8,8 @@ import AksiBack from "./AksiBack";
 import formatDate from "@/lib/formatDate";
 import AksiEdit from "./AksiEdit";
 interface CardTodoConten {
+  id_todo: number;
+  status: number;
   title: string;
   desc: string;
   priority: number;
@@ -15,6 +17,8 @@ interface CardTodoConten {
 }
 
 export function CardTodoConten({
+  id_todo,
+  status,
   title,
   desc,
   priority,
@@ -37,12 +41,12 @@ export function CardTodoConten({
         <p className="text-wrap line-clamp-2">{desc}</p>
         <Separator />
         <div className="flex space-x-1 items-center justify-between">
-          <AksiBack />
+          {status > 1 ? <AksiBack id_todo={id_todo} /> : ""}
           <p className="space-x-1">
             <span>Due Date:</span>
             <span className="font-semibold">{formatDate(due_date)}</span>
           </p>
-          <AksiNext />
+          {status < 3 ? <AksiNext id_todo={id_todo} /> : ""}
         </div>
       </CardContent>
     </Card>

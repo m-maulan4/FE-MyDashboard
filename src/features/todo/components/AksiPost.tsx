@@ -30,18 +30,22 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import React from "react";
+import { useState } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { usePostTodoMutation } from "../todoApi";
 import { toast } from "sonner";
 
 export default function AksiPost() {
+  const [open, setOpen] = useState<boolean>();
   const [postTodo] = usePostTodoMutation();
-  const [date, setDate] = React.useState<Date | undefined>(new Date());
+  const nowDate = new Date();
+  const [dueDate, setDueDate] = useState<Date | undefined>(nowDate);
   const form = useForm<formSchemaPost>({
     defaultValues: {
+      title: "",
+      desc: "",
       status: 1,
-      due_date: date,
+      due_date: dueDate,
     },
   });
 
@@ -49,10 +53,13 @@ export default function AksiPost() {
     try {
       await postTodo(data).unwrap();
       toast.success("berhasil menambahkan data");
+      setDueDate(new Date());
+      form.reset();
+      setOpen(false);
     } catch (error) {}
   }
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant={"secondary"} className="btn-green">
           <Plus strokeWidth={4} /> New Task
@@ -84,6 +91,7 @@ export default function AksiPost() {
                     {...field}
                     id={field.name}
                     aria-invalid={fieldState.invalid}
+                    placeholder="Title"
                   />
                   {fieldState.invalid && (
                     <FieldError
@@ -127,7 +135,7 @@ export default function AksiPost() {
               control={form.control}
               name="priority"
               rules={{ required: "pilih salah satu" }}
-              defaultValue={}
+              defaultValue=""
               render={({ field, fieldState }) => (
                 <Field
                   data-invalid={fieldState.invalid}
@@ -179,18 +187,22 @@ export default function AksiPost() {
                     <PopoverTrigger id={field.name} asChild>
                       <Button
                         variant="outline"
-                        data-empty={!date}
+                        data-empty={!dueDate}
                         className="data-[empty=true]:text-muted-foreground w-[280px] justify-start text-left font-normal"
                       >
                         <CalendarIcon />
-                        {date ? date.toLocaleDateString() : "Select date"}
+                        {dueDate ? dueDate.toLocaleDateString() : "Select date"}
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-auto p-0">
                       <Calendar
                         mode="single"
-                        selected={date}
-                        onSelect={setDate}
+                        selected={dueDate}
+                        id={field.name}
+                        onSelect={(e) => {
+                          field.onChange(e);
+                          setDueDate(e);
+                        }}
                       />
                     </PopoverContent>
                   </Popover>
