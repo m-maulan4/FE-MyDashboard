@@ -27,13 +27,6 @@ export function LoginForm({
     } catch (err) {
       console.log(err);
     }
-    // try {
-    //   const result = await login({ username, password }).unwrap();
-    //   dispatch(setCredentials(result));
-    //   navigate("/");
-    // } catch (error) {
-    //   throw error;
-    // }
   };
 
   return (

@@ -3,7 +3,7 @@ import type { AuthState } from "./authType";
 
 const initialState: AuthState = {
   username: "",
-  token_csrf: "",
+  access_token: "",
 };
 const AUTH_STORAGE = "user";
 
@@ -12,17 +12,13 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setCredentials: (state, action: PayloadAction<AuthState>) => {
-      state.username = action.payload.username;
-      state.token_csrf = action.payload.token_csrf;
       const dataToPersist = {
         username: action.payload.username,
-        token_csrf: action.payload.token_csrf,
+        access_token: action.payload.access_token,
       };
       localStorage.setItem(AUTH_STORAGE, JSON.stringify(dataToPersist));
     },
-    logout: (state) => {
-      state.username = "";
-      state.token_csrf = "";
+    logout: () => {
       localStorage.removeItem(AUTH_STORAGE);
     },
   },

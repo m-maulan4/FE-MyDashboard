@@ -1,4 +1,4 @@
-import Keuangan from "@/pages/Keuangan";
+import Keuangan from "@/layout/Keuangan";
 import type { IconName } from "lucide-react/dynamic";
 import type React from "react";
 

@@ -9,14 +9,7 @@ import { setCredentials, logout } from "@/features/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_API_URL,
-  credentials: "include", // penting agar refreshToken di cookie ikut
-  // prepareHeaders: (headers, { getState }) => {
-  //   const token = (getState() as RootState).auth.access_token;
-  //   if (token) {
-  //     headers.set("authorization", `Bearer ${token}`);
-  //   }
-  //   return headers;
-  // },
+  credentials: "include",
 });
 
 export const baseQueryWithReauth: BaseQueryFn<
@@ -25,25 +18,22 @@ export const baseQueryWithReauth: BaseQueryFn<
   FetchBaseQueryError
 > = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
-
-  // kalau token expired (401)
   if (result.error && result.error.status === 401) {
     console.warn("Access token expired, mencoba refresh...");
     // coba refresh token
-    const refreshResult = await baseQuery("/auth/newToken", api, extraOptions);
+    const refreshResult = await baseQuery("/auth/newtoken", api, extraOptions);
 
     if (refreshResult.data) {
-      const { username, token_user } = refreshResult.data as {
+      const { username, access_token } = refreshResult.data as {
         username: string;
-        token_user: string;
+        access_token: string;
       };
 
       // update state dengan accessToken baru
       api.dispatch(
         setCredentials({
           username,
-          token_user,
-          isAuthenticated: true,
+          access_token,
         })
       );
 
@@ -52,6 +42,7 @@ export const baseQueryWithReauth: BaseQueryFn<
     } else {
       // kalau refresh gagal → logout
       api.dispatch(logout());
+      console.warn("Login Ulang");
     }
   }
 

@@ -15,12 +15,14 @@ import {
 } from "@/components/ui/sidebar";
 import { logout } from "@/features/auth/authSlice";
 import { useLogoutMutation } from "@/features/auth/authApi";
-import { useAppDispatch, useAppSelector } from "@/hooks/AppDispatch";
+import { useAppDispatch } from "@/hooks/AppDispatch";
 import { useNavigate } from "react-router";
 
 export function NavUser() {
   const { isMobile } = useSidebar();
-  const user = useAppSelector((state) => state.auth);
+  // const user = useAppSelector((state) => state.auth);
+  const localstorage = localStorage.getItem("user") || "{}";
+  const user = JSON.parse(localstorage);
   const [logoutApi] = useLogoutMutation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -42,12 +44,12 @@ export function NavUser() {
             <SidebarMenuButton
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground border"
-              tooltip={user.username}
+              tooltip={user?.username}
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={user.username} alt={user.username} />
                 <AvatarFallback className="rounded-lg">
-                  {user.username.slice(0, 1).toUpperCase()}
+                  {user?.username?.slice(0, 1).toUpperCase()}
                 </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">

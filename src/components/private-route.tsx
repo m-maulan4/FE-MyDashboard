@@ -1,13 +1,17 @@
 import { Navigate, Outlet } from "react-router";
-import { useSelector } from "react-redux";
-import type { RootState } from "@/store/store";
-
 const ProtectedRoute = () => {
-  const accessToken = useSelector((state: RootState) => state.auth.token_user);
-  if (!accessToken) {
+  const rawData = localStorage.getItem("user");
+  let user = null;
+  if (rawData) {
+    try {
+      user = JSON.parse(rawData);
+    } catch (err) {
+      console.error("Error parsing user data:", err);
+    }
+  }
+  if (!user || !user.access_token) {
     return <Navigate to="/login" replace />;
   }
-
   return <Outlet />;
 };
 

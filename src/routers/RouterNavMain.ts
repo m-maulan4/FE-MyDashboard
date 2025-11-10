@@ -1,6 +1,6 @@
 import type React from "react";
 import type { IconName } from "lucide-react/dynamic";
-import Home from "@/pages/Home";
+import Home from "@/layout/Home";
 
 interface RouterDataProps {
   title: string;

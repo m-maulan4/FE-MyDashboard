@@ -6,9 +6,9 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Outlet } from "react-router";
-import { ModeToggle } from "./components/dark-mode";
+import { ModeToggle } from "../components/dark-mode";
 
-export default function App() {
+export default function Dashboard() {
   return (
     <SidebarProvider>
       <AppSidebar />
