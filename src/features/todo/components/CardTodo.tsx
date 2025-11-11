@@ -1,12 +1,11 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Dot } from "lucide-react";
-import { DynamicIcon } from "lucide-react/dynamic";
+import { Dot, type LucideIcon } from "lucide-react";
 import AksiNext from "./AksiNext";
 import AksiBack from "./AksiBack";
 import formatDate from "@/lib/formatDate";
-import AksiEdit from "./AksiEdit";
+import AksiHapus from "./AksiHapus";
 interface CardTodoConten {
   id_todo: number;
   status: number;
@@ -32,7 +31,7 @@ export function CardTodoConten({
             <span>Priority :</span>
             <BadgeTodo priority={priority as 1 | 2 | 3} />
           </p>
-          <AksiEdit />
+          <AksiHapus id_todo={id_todo} />
         </div>
         <Separator />
         <CardTitle className="capitalize text-lg text-wrap line-clamp-1">
@@ -69,19 +68,21 @@ function BadgeTodo({ priority }: { priority: 1 | 2 | 3 }) {
     </Badge>
   );
 }
+
+interface CardTitleProps {
+  title: string;
+  icons: LucideIcon;
+  iconcolor?: "red" | "blue" | "green";
+}
 export function CardTodoTitle({
   title,
-  icons,
+  icons: Icon,
   iconcolor,
-}: {
-  title: string;
-  icons: "circle" | "circle-check" | "circle-dashed";
-  iconcolor: "red" | "blue" | "green";
-}) {
+}: CardTitleProps) {
   return (
     <Card className="p-3 bg-muted mb-6">
       <CardTitle className="flex items-center space-x-3">
-        <DynamicIcon name={icons} color={iconcolor} />
+        <Icon color={iconcolor} />
         <p className="font-semibold">{title}</p>
       </CardTitle>
     </Card>

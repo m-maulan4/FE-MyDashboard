@@ -1,6 +1,10 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQueryWithReauth } from "@/api/baseQuery";
-import type { formSchemaPost, resGetAllTodo, todoBackNext } from "./todoType";
+import type {
+  formSchemaPost,
+  resGetAllTodo,
+  todoBackNextDel,
+} from "./todoType";
 
 export const todoApi = createApi({
   reducerPath: "todoApi",
@@ -19,7 +23,7 @@ export const todoApi = createApi({
       }),
       invalidatesTags: ["todo"],
     }),
-    patchNextTodo: builder.mutation<void, todoBackNext>({
+    patchNextTodo: builder.mutation<void, todoBackNextDel>({
       query: (body) => ({
         url: "/todo/next",
         method: "PATCH",
@@ -27,7 +31,7 @@ export const todoApi = createApi({
       }),
       invalidatesTags: ["todo"],
     }),
-    patchBackTodo: builder.mutation<void, todoBackNext>({
+    patchBackTodo: builder.mutation<void, todoBackNextDel>({
       query: (body) => ({
         url: "/todo/back",
         method: "PATCH",
@@ -35,10 +39,10 @@ export const todoApi = createApi({
       }),
       invalidatesTags: ["todo"],
     }),
-    putEditTodo: builder.mutation<void, formSchemaPost>({
+    delTodo: builder.mutation<void, todoBackNextDel>({
       query: (body) => ({
         url: "/todo",
-        method: "PUT",
+        method: "DELETE",
         body,
       }),
       invalidatesTags: ["todo"],
@@ -51,4 +55,5 @@ export const {
   usePostTodoMutation,
   usePatchBackTodoMutation,
   usePatchNextTodoMutation,
+  useDelTodoMutation,
 } = todoApi;

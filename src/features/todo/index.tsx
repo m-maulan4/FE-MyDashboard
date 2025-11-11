@@ -2,6 +2,7 @@ import LoadingPage from "@/pages/LoadingPage";
 import { CardTodoConten, CardTodoTitle } from "./components/CardTodo";
 import { useGetAllTodoQuery } from "./todoApi";
 import HeaderTodo from "./components/HeaderTodo";
+import { Circle, CircleCheck, CircleDashed } from "lucide-react";
 
 export default function TodoPage() {
   const { data, isLoading } = useGetAllTodoQuery();
@@ -11,7 +12,7 @@ export default function TodoPage() {
       <HeaderTodo />
       <div className="grid grid-cols-3 gap-3">
         <div className="flex flex-col space-y-4">
-          <CardTodoTitle title="Pending" icons="circle" iconcolor="red" />
+          <CardTodoTitle title="Pending" icons={Circle} iconcolor="red" />
           {data?.pending.map((p, i) => (
             <CardTodoConten
               key={i}
@@ -27,7 +28,7 @@ export default function TodoPage() {
         <div className="flex flex-col space-y-4">
           <CardTodoTitle
             title="On Progress"
-            icons="circle-dashed"
+            icons={CircleDashed}
             iconcolor="blue"
           />
           {data?.on_progress.map((o, i) => (
@@ -45,7 +46,7 @@ export default function TodoPage() {
         <div className="flex flex-col space-y-4">
           <CardTodoTitle
             title="Completed"
-            icons="circle-check"
+            icons={CircleCheck}
             iconcolor="green"
           />
           {data?.completed.map((c, i) => (

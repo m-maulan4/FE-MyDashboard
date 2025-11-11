@@ -1,5 +1,4 @@
 import { ChevronRight } from "lucide-react";
-
 import {
   Collapsible,
   CollapsibleContent,
@@ -17,7 +16,6 @@ import {
 import RouterNavMainSecond from "@/routers/RouterNavMainSecond";
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router";
-import { DynamicIcon } from "lucide-react/dynamic";
 
 export function NavMainSecond() {
   const [openIndex, SetOpenIndex] = useState<string>("");

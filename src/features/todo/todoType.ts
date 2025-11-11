@@ -5,7 +5,7 @@ export interface formSchemaPost {
   priority: number;
   due_date: Date;
 }
-export interface todoBackNext {
+export interface todoBackNextDel {
   id_todo: number;
 }
 
