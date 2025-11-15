@@ -1,4 +1,5 @@
 import BidangPage from "@/features/akpd/bidang";
+import SettingPage from "@/features/finance/setting";
 import TransactionsPage from "@/features/finance/transactions";
 import Keuangan from "@/layout/Keuangan";
 import { ClipboardList, House, type LucideIcon } from "lucide-react";
@@ -41,6 +42,11 @@ const RouterNavMainSecond: RouterDataProps[] = [
         title: "Transaksi",
         path: "transaksi",
         component: TransactionsPage,
+      },
+      {
+        title: "Setting",
+        path: "setting",
+        component: SettingPage,
       },
     ],
   },

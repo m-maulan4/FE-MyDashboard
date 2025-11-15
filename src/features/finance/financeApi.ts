@@ -1,25 +1,64 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQueryWithReauth } from "@/api/baseQuery";
 import type { transaksiType } from "./transactions/components/colomns";
+import type {
+  getDompet,
+  getKategori,
+  postDompet,
+  postKategori,
+  postTransaksi,
+} from "./transactions/type";
+import type { apiResponSuccess } from "@/types/types";
 
 export const financeApi = createApi({
   reducerPath: "financeApi",
   baseQuery: baseQueryWithReauth,
-  tagTypes: [""],
+  tagTypes: ["transaksi", "kategori", "dompet"],
   endpoints: (builder) => ({
     getAllTransaksi: builder.query<transaksiType[], void>({
       query: () => "/keuangan/transaksi",
-      providesTags: [""],
+      providesTags: ["transaksi"],
     }),
-    // postTodo: builder.mutation<void, void>({
-    //   query: (body) => ({
-    //     url: "/todo",
-    //     method: "POST",
-    //     body,
-    //   }),
-    //   invalidatesTags: [""],
-    // }),
+    postTransaksi: builder.mutation<apiResponSuccess, postTransaksi>({
+      query: (body) => ({
+        url: "/keuangan/transaksi",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["transaksi"],
+    }),
+    getAllKategori: builder.query<getKategori[], void>({
+      query: () => "/keuangan/kategori",
+      providesTags: ["kategori"],
+    }),
+    postKategori: builder.mutation<apiResponSuccess, postKategori>({
+      query: (body) => ({
+        url: "/keuangan/kategori",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["kategori"],
+    }),
+    getAllDompet: builder.query<getDompet[], void>({
+      query: () => "/keuangan/dompet",
+      providesTags: ["dompet"],
+    }),
+    postDompet: builder.mutation<apiResponSuccess, postDompet>({
+      query: (body) => ({
+        url: "/keuangan/dompet",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["dompet"],
+    }),
   }),
 });
 
-export const { useGetAllTransaksiQuery } = financeApi;
+export const {
+  useGetAllTransaksiQuery,
+  useGetAllDompetQuery,
+  useGetAllKategoriQuery,
+  usePostTransaksiMutation,
+  usePostKategoriMutation,
+  usePostDompetMutation,
+} = financeApi;
