@@ -39,6 +39,7 @@ export interface widgetOverview {
   type: number;
 }
 export interface getOverview {
-  uangMasuk: widgetOverview;
-  uangKeluar: widgetOverview;
+  total_masuk: number;
+  total_keluar: number;
+  saldo: number;
 }

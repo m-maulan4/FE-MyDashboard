@@ -25,7 +25,7 @@ export default function CardWidget({ type, jumlah, title }: Props) {
   return (
     <Card className={`p-3 ${config.style}`}>
       <div className="flex space-x-3">
-        <div className="p-2 bg-muted rounded-lg h-fit my-auto">
+        <div className="p-2 bg-muted rounded-lg flex items-center">
           {type && <config.icon color={config.color} />}
         </div>
         <div className="flex flex-col space-y-1">
