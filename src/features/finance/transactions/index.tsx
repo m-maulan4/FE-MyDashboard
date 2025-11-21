@@ -14,7 +14,7 @@ export default function TransactionsPage() {
       <HeaderPage title="Transaksi" aksibtn={<AksiAdd iconOnly="n" />} />
       <Card>
         <CardContent>
-          <DataTable data={data} columns={columns} />
+          <DataTable data={data} columns={columns} paginationState />
         </CardContent>
       </Card>
     </div>

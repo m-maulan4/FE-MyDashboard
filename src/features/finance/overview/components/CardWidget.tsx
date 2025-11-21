@@ -28,7 +28,7 @@ export default function CardWidget({ type, jumlah, title }: Props) {
         <div className="px-4 bg-muted rounded-lg flex items-center">
           {type && <config.icon color={config.color} />}
         </div>
-        <div className="flex flex-col space-y-1">
+        <div className="flex flex-col space-y-0.5">
           <h6>{"Rp " + jumlah.toLocaleString("id-ID")}</h6>
           <p className="capitalize">{title}</p>
         </div>

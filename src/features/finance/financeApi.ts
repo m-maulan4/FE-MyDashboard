@@ -1,6 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQueryWithReauth } from "@/api/baseQuery";
-import type { transaksiType } from "./transactions/components/colomns";
 import type {
   getDompet,
   getKategori,
@@ -8,6 +7,7 @@ import type {
   postDompet,
   postKategori,
   postTransaksi,
+  transaksiType,
 } from "./transactions/type";
 import type { apiResponSuccess } from "@/types/types";
 

@@ -4,15 +4,7 @@ import { Button } from "@/components/ui/button";
 import { idrFormatter } from "@/lib/idrformater";
 import { type ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
-
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-export type transaksiType = {
-  jenis_transaksi: number;
-  ket: string;
-  jumlah: number;
-  nama_dompet: string;
-};
+import type { transaksiType } from "../type";
 
 export const columns: ColumnDef<transaksiType>[] = [
   {
@@ -55,6 +47,16 @@ export const columns: ColumnDef<transaksiType>[] = [
           </Button>
         </>
       );
+    },
+  },
+  {
+    accessorKey: "nama_kategori",
+    header: "Kategori",
+    // size: 1800,
+    // maxSize: 1800,
+    cell: (v) => {
+      const data: any = v.getValue();
+      return <p className="line-clamp-1 text-wrap">{data}</p>;
     },
   },
   {

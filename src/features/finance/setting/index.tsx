@@ -38,7 +38,6 @@ export default function SettingPage() {
           />
         </div>
         <div>
-          {" "}
           <CardSetting
             title="Dompet"
             aksibtn={

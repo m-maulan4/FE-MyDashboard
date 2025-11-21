@@ -56,6 +56,20 @@ export interface getOverview {
     nama_kategori: string;
     jumlah: number;
   }[];
+  transactionLastWeek: {
+    jenis_transaksi: number;
+    ket: string;
+    jumlah: number;
+    nama_dompet: string;
+    nama_kategori: string;
+  }[];
   tagihan: tagihanGoals[];
   goals: tagihanGoals[];
 }
+export type transaksiType = {
+  jenis_transaksi: number;
+  ket: string;
+  jumlah: number;
+  nama_dompet: string;
+  nama_kategori: string;
+};
