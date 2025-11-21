@@ -1,4 +1,5 @@
 import { useGetOverviewQuery } from "../financeApi";
+import CardBill from "./components/CardBill";
 import CardWidget from "./components/CardWidget";
 
 export default function OverViewPage() {
@@ -23,7 +24,9 @@ export default function OverViewPage() {
           title="Total Uang Keluar"
         />
       </div>
-      <div className="grid grid-cols-1 gap-3 h-fit max-md:hidden">asdfd</div>
+      <div className="grid grid-cols-1 gap-3 h-fit max-md:hidden">
+        <CardBill />
+      </div>
     </div>
   );
 }

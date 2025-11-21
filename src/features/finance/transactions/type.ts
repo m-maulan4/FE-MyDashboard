@@ -33,10 +33,13 @@ export interface postDompet {
 export interface FormAddTransaksiProps {
   onSubmitSuccess: (status: boolean) => void;
 }
-export interface widgetOverview {
+export interface tagihanGoals {
+  id: number;
   title: string;
-  jumlah: number;
-  type: number;
+  amount: number;
+  desc: string;
+  done: number;
+  due_date: Date;
 }
 export interface getOverview {
   widgets: {
@@ -44,4 +47,15 @@ export interface getOverview {
     total_keluar: number;
     saldo: number;
   };
+  analyticBar: {
+    hari: string;
+    uangMasuk: number;
+    uangKeluar: number;
+  }[];
+  analyticPie: {
+    nama_kategori: string;
+    jumlah: number;
+  }[];
+  tagihan: tagihanGoals[];
+  goals: tagihanGoals[];
 }
