@@ -4,7 +4,6 @@ import "./index.css";
 import Dashboard from "./layout/Dashboard.tsx";
 import { BrowserRouter, Route, Routes } from "react-router";
 import RouterNavMain from "@/routers/RouterNavMain.ts";
-import RouterNavMainSecond from "@/routers/RouterNavMainSecond.ts";
 import { ThemeProvider } from "@/components/theme-provider.tsx";
 import LoginPage from "./features/auth/index.tsx";
 import { Provider } from "react-redux";
