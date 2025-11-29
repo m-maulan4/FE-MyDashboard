@@ -18,11 +18,14 @@ createRoot(document.getElementById("root")!).render(
           <Routes>
             <Route element={<ProtectedRoute />}>
               <Route element={<Dashboard />}>
-                {RouterNavMain.map((r) => (
-                  <Route path={r.path} element={<r.component />} />
+                {RouterNavMain.filter((f) => f.subMenu === false).map((r) => (
+                  <Route
+                    path={r.path}
+                    element={r.component && <r.component />}
+                  />
                 ))}
-                {RouterNavMainSecond.map((r) => {
-                  return r.items.map((rr) => (
+                {RouterNavMain.filter((f) => f.subMenu === true).map((r) => {
+                  return r.items!.map((rr) => (
                     <Route
                       key={rr.path}
                       path={r.path + "/" + rr.path}

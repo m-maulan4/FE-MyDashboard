@@ -1,4 +1,4 @@
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import type { tagihanGoals } from "../../transactions/type";
 import {
@@ -14,11 +14,14 @@ interface Props {
   data: tagihanGoals[] | undefined;
 }
 export default function CardGoalsBill({ data, title }: Props) {
-  const dataLength = data?.length === 1 ? "h-fit" : "h-60";
+  const dataLength = (data?.length ?? 0) <= 5 ? "h-fit" : "h-60";
+  const display = data?.length === 0 && "hidden";
   return (
     <Card>
-      <CardContent className="space-y-6 px-2">
+      <CardHeader>
         <CardTitle className="text-center">{title}</CardTitle>
+      </CardHeader>
+      <CardContent className={`px-2 ${display}`}>
         <ScrollArea className={`${dataLength} rounded-md border`}>
           <div className="p-4">
             <ItemGroup>

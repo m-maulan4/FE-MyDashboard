@@ -5,11 +5,21 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import { ModeToggle } from "../components/dark-mode";
 import { Toaster } from "@/components/ui/sonner";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import React from "react";
 
 export default function Dashboard() {
+  const location = useLocation();
+  const pathnames = location.pathname.split("/").filter((x) => x);
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -21,6 +31,22 @@ export default function Dashboard() {
               orientation="vertical"
               className="mr-2 data-[orientation=vertical]:h-4"
             />
+            <Breadcrumb>
+              <BreadcrumbList>
+                {pathnames.map((p, i) => (
+                  <React.Fragment key={i}>
+                    <BreadcrumbItem className="hidden md:block">
+                      <BreadcrumbPage className="capitalize">
+                        {p}
+                      </BreadcrumbPage>
+                    </BreadcrumbItem>
+                    {i < pathnames.length - 1 && (
+                      <BreadcrumbSeparator className="hidden md:block" />
+                    )}
+                  </React.Fragment>
+                ))}
+              </BreadcrumbList>
+            </Breadcrumb>
           </div>
           <ModeToggle />
         </header>
