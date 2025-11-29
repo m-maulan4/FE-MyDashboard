@@ -135,7 +135,6 @@ export default function AksiPost() {
               control={form.control}
               name="priority"
               rules={{ required: "pilih salah satu" }}
-              defaultValue=""
               render={({ field, fieldState }) => (
                 <Field
                   data-invalid={fieldState.invalid}
