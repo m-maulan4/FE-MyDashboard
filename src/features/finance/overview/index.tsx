@@ -27,7 +27,7 @@ export default function OverViewPage() {
         <CardWidget
           type="1"
           jumlah={data?.widgets.total_masuk || 0}
-          title="Total Uang Keluar"
+          title="Total Uang Masuk"
         />
         <CardWidget
           type="2"

@@ -28,7 +28,7 @@ export default function CardGoalsBill({ data, title }: Props) {
               {data?.map((d, i) => (
                 <Fragment key={i}>
                   <ItemContent>
-                    <ItemTitle>{d.title}</ItemTitle>
+                    <ItemTitle className="text-wrap">{d.title}</ItemTitle>
                     <ItemDescription>
                       Rp {d.amount.toLocaleString("id-ID")}
                     </ItemDescription>

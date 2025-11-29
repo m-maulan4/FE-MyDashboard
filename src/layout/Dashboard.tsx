@@ -19,7 +19,10 @@ import React from "react";
 
 export default function Dashboard() {
   const location = useLocation();
-  const pathnames = location.pathname.split("/").filter((x) => x);
+  let pathnames = location.pathname.split("/").filter((x) => x);
+  if (pathnames.length === 0) {
+    pathnames = ["home"];
+  }
   return (
     <SidebarProvider>
       <AppSidebar />
