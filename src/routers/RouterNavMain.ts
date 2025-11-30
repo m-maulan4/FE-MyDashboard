@@ -53,7 +53,7 @@ const RouterNavMain: RouterDataProps[] = [
   {
     title: "AKPD",
     icon: ClipboardCheckIcon,
-    path: "akpd",
+    path: "AKPD",
     subMenu: true,
     items: [
       {
