@@ -1,11 +1,11 @@
-import HeaderAkpd from "../components/HeaderAkpd";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import TabsBidang from "./TabsBidang";
+import HeaderAkpd from "../components/HeaderAkpd";
+import TabsSKKPD from "./TabsSKKPD";
 
-export default function SoalPage() {
+export default function SKKPDPage() {
   return (
     <>
-      <HeaderAkpd title="penyusunan butir instrumen angket kebutuhan peserta didik" />
+      <HeaderAkpd title="Standar Kompetensi Kemandirian Peserta Didik" />
       <Tabs defaultValue="default">
         <TabsList>
           <p className="px-2 font-semibold">Kelas :</p>
@@ -20,13 +20,13 @@ export default function SoalPage() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="10">
-          <TabsBidang />
+          <TabsSKKPD />
         </TabsContent>
         <TabsContent value="11">
-          <TabsBidang />
+          <TabsSKKPD />
         </TabsContent>
         <TabsContent value="12">
-          <TabsBidang />
+          <TabsSKKPD />
         </TabsContent>
         <TabsContent value="default" className="capitalize">
           silakang pilih kelas terlebih dahulu

@@ -11,7 +11,7 @@ import OverViewPage from "@/features/finance/overview";
 import TransactionsPage from "@/features/finance/transactions";
 import SettingPage from "@/features/finance/setting";
 import SoalPage from "@/features/akpd/soal";
-import BidangPage from "@/features/akpd/bidang";
+import SKKPDPage from "@/features/akpd/skkpd";
 
 const RouterNavMain: RouterDataProps[] = [
   {
@@ -58,9 +58,9 @@ const RouterNavMain: RouterDataProps[] = [
     subMenu: true,
     items: [
       {
-        title: "Bidang",
-        path: "bidang",
-        component: BidangPage,
+        title: "SKKPD",
+        path: "SKKPD",
+        component: SKKPDPage,
       },
       {
         title: "Soal",
