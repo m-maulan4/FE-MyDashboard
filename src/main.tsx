@@ -15,13 +15,14 @@ createRoot(document.getElementById("root")!).render(
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
-            <Route
+            {/* <Route
               element={
                 <ProtectedRoute>
                   <Dashboard />
                 </ProtectedRoute>
               }
-            >
+            > */}
+            <Route element={<Dashboard />}>
               {RouterNavMain.filter((f) => f.subMenu === false).map((r) => (
                 <Route path={r.path} element={r.component && <r.component />} />
               ))}

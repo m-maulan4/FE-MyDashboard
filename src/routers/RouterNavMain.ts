@@ -10,6 +10,7 @@ import type { RouterDataProps } from "./routeType";
 import OverViewPage from "@/features/finance/overview";
 import TransactionsPage from "@/features/finance/transactions";
 import SettingPage from "@/features/finance/setting";
+import SoalPage from "@/features/akpd/soal";
 import BidangPage from "@/features/akpd/bidang";
 
 const RouterNavMain: RouterDataProps[] = [
@@ -60,6 +61,11 @@ const RouterNavMain: RouterDataProps[] = [
         title: "Bidang",
         path: "bidang",
         component: BidangPage,
+      },
+      {
+        title: "Soal",
+        path: "soal",
+        component: SoalPage,
       },
     ],
   },
